@@ -1,12 +1,10 @@
 import PodcastsChips from "./components/PodcastsChips";
+import Search from "./components/Search";
 
 const Header = () => {
     return (
-        <div className="flex flex-col gap-4">
-            <div>
-                <h1 className="text-[40px] font-black">Podcast</h1>
-            </div>
-
+        <div className="flex flex-col gap-4 md:py-8 md:px-24">
+            <Search />
             <PodcastsChips />
         </div>
     );
