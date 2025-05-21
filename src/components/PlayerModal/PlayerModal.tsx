@@ -1,10 +1,19 @@
+import { usePlayerStore } from "../../stores/usePlayerStore";
+
 const PlayerModal = () => {
+    const { isPlayerOpen, togglePlayer } = usePlayerStore();
+
     return (
-        <div className="w-[100vw] md:w-[380px] md:h-[440px] fixed z-20 bottom-0 md:bottom-5 md:right-5 bg-[#0F0F2D] md:bg-[#0F0F2DCC] md:backdrop-blur-[30px] flex flex-col py-6 md:rounded-[39px]">
+        <div
+            className={`w-[100vw] md:w-[380px] md:h-[440px] fixed z-20 bottom-0 md:bottom-5 md:right-5 bg-[#0F0F2D] md:bg-[#0F0F2DCC] md:backdrop-blur-[30px] flex flex-col py-6 md:rounded-[39px] ${
+                isPlayerOpen ? "md:opacity-100" : "md:opacity-0"
+            } duration-200 ease-in-out `}
+        >
             <img
                 src="/src/assets/close-icon.svg"
                 alt="close icon"
                 className="hidden md:block absolute top-7 left-7 cursor-pointer"
+                onClick={togglePlayer}
             />
             <div className="w-full h-full flex md:flex-col justify-center items-center gap-4">
                 <div className="flex md:flex-col gap-4 justify-center items-center text-white md:mt-10">
