@@ -7,14 +7,18 @@ interface PodcastCardProps {
 }
 
 const PodcastCard = ({ podcastData }: PodcastCardProps) => {
-    const { setSelectedPodcastId } = usePodcastDetailStore();
+    const { setSelectedPodcastId, setSelectedPodcastData } =
+        usePodcastDetailStore();
     const { id, title, description, author, image } = podcastData;
 
     return (
         <Fragment>
             {/* // Card Mobile */}
             <div
-                onClick={() => setSelectedPodcastId(id)}
+                onClick={() => {
+                    setSelectedPodcastId(id);
+                    setSelectedPodcastData(podcastData);
+                }}
                 className="flex md:hidden items-center gap-4 w-full"
             >
                 <div
@@ -44,7 +48,10 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
 
             {/* // Card Desktop */}
             <div
-                onClick={() => setSelectedPodcastId(id)}
+                onClick={() => {
+                    setSelectedPodcastId(id);
+                    setSelectedPodcastData(podcastData);
+                }}
                 className="relative hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-between p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer "
             >
                 <div

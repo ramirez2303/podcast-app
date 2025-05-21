@@ -4,8 +4,10 @@ import { usePlayerStore } from "../../stores/usePlayerStore";
 import { useEffect, useCallback } from "react";
 
 const DetailModal = () => {
-    const { selectedPodcastId, setSelectedPodcastId } = usePodcastDetailStore();
+    const { selectedPodcastId, setSelectedPodcastId, selectedPodcastData } =
+        usePodcastDetailStore();
     const { isPlayerOpen, togglePlayer } = usePlayerStore();
+    const { image, title, description } = selectedPodcastData || {};
 
     const handleKeyDown = useCallback(
         ({ key }: KeyboardEvent): void => {
@@ -65,17 +67,14 @@ const DetailModal = () => {
                 </div>
                 <div className="w-full overflow-y-auto px-12 flex flex-col gap-10">
                     <div className="w-full flex flex-col justify-start items-center gap-4">
-                        <div className="w-[230px] h-[230px] rounded-[20px] bg-red-300" />
-                        <h4 className="text-[26px] font-black">
-                            Penang Hokkien
-                        </h4>
+                        <img
+                            className="w-[230px] h-[230px] rounded-[20px] "
+                            src={image}
+                            alt="podcast image"
+                        />
+                        <h4 className="text-[26px] font-black">{title}</h4>
                         <p className="text-base font-medium text-center">
-                            The very first podcast entirely in Penang style
-                            Hokkien. A fun show for Penangites and all who
-                            understand the Chinese Hokkien language or 閩南語
-                            (Min Nan). Funny and casual chats with no topic
-                            restrictions. We talk about things that you will
-                            only share with your closest friends.
+                            {description}
                         </p>
                     </div>
                     <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
