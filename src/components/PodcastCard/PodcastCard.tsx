@@ -18,7 +18,7 @@ const PodcastCard = () => {
             </div>
 
             {/* // Card Desktop */}
-            <div className="hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-between p-4 bg-gray-700 rounded-xl text-white">
+            <div className="hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-between p-4 bg-gray-700 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer">
                 <button className="w-[30px] h-[30px] self-end">
                     <img
                         src="/src/assets/star-icon.svg"
