@@ -2,7 +2,7 @@ import PodcastCard from "../PodcastCard";
 
 const PodcastListBase = () => {
     return (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-4">
             {Array(8)
                 .fill({})
                 .map((_) => (
