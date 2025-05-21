@@ -67,7 +67,7 @@ const DetailModal = () => {
                         onClick={toggleIsDetailOpen}
                     />
                 </div>
-                <div className="w-full overflow-y-auto px-12 flex flex-col gap-10">
+                <div className="w-full overflow-y-auto px-6 md:px-12 flex flex-col gap-10">
                     <div className="w-full flex flex-col justify-start items-center gap-4">
                         <img
                             className="w-[230px] h-[230px] rounded-[20px] "
@@ -96,7 +96,7 @@ const DetailModal = () => {
                                             alt="episode image"
                                         />
                                         <div className="flex flex-col justify-center items-start">
-                                            <span className="md:max-w-[15rem] text-base font-bold whitespace-nowrap text-ellipsis overflow-hidden">
+                                            <span className="max-w-[12rem] md:max-w-[15rem] text-base font-bold whitespace-nowrap text-ellipsis overflow-hidden">
                                                 {item.title}
                                             </span>
                                             <span className="text-sm font-regular">

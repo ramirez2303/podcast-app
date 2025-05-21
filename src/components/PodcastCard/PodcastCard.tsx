@@ -54,7 +54,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                     setSelectedPodcastId(id);
                     setSelectedPodcastData(podcastData);
                 }}
-                className="relative hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-between p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer "
+                className="relative hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-between p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg"
             >
                 <div
                     className="absolute w-full h-full top-0 left-0 rounded-xl -z-2"

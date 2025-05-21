@@ -1,5 +1,6 @@
 import type { PodcastList } from "@/types";
 import PodcastCard from "../PodcastCard";
+import CardSkeleton from "../skeletons/CardSkeleton";
 
 interface PodcastListBaseProps {
     podcasts?: PodcastList;
@@ -14,10 +15,13 @@ const PodcastListBase = ({
 PodcastListBaseProps) => {
     return (
         <div className="w-full flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-4">
-            {!isLoading &&
-                podcasts?.map((item, ix) => (
-                    <PodcastCard key={item.id + ix} podcastData={item} />
-                ))}
+            {isLoading
+                ? Array(8)
+                      .fill({})
+                      .map((_, ix) => <CardSkeleton key={ix} />)
+                : podcasts?.map((item, ix) => (
+                      <PodcastCard key={item.id + ix} podcastData={item} />
+                  ))}
         </div>
     );
 };
