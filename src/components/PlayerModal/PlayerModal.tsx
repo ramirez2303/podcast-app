@@ -2,11 +2,12 @@ import { usePlayerStore } from "../../stores/usePlayerStore";
 
 const PlayerModal = () => {
     const { isPlayerOpen, togglePlayer } = usePlayerStore();
-
     return (
         <div
             className={`w-[100vw] md:w-[380px] md:h-[440px] fixed z-20 bottom-0 md:bottom-5 md:right-5 bg-[#0F0F2D] md:bg-[#0F0F2DCC] md:backdrop-blur-[30px] flex flex-col py-6 md:rounded-[39px] ${
-                isPlayerOpen ? "md:opacity-100" : "md:opacity-0"
+                isPlayerOpen
+                    ? "md:opacity-100"
+                    : "md:opacity-0 pointer-events-none"
             } duration-200 ease-in-out `}
         >
             <img

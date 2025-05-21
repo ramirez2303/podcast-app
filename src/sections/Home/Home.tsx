@@ -4,7 +4,7 @@ import TrendingSection from "./components/TrendingSection";
 
 const Home = () => {
     return (
-        <div className="min-w-[100vw] min-h-[100vh] flex flex-col gap-12 ">
+        <div className="min-w-[100vw] min-h-[100vh] flex flex-col gap-6">
             <Header />
             <div className="md:mx-auto md:max-w-[85%] min-[1700px]:max-w-[70%] flex justify-center items-center py-0 px-8 md:py-8 md:px-24">
                 <TrendingSection />
