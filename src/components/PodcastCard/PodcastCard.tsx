@@ -7,7 +7,7 @@ interface PodcastCardProps {
 }
 
 const PodcastCard = ({ podcastData }: PodcastCardProps) => {
-    const { setSelectedPodcastId, setSelectedPodcastData } =
+    const { toggleIsDetailOpen, setSelectedPodcastId, setSelectedPodcastData } =
         usePodcastDetailStore();
     const { id, title, description, author, image } = podcastData;
 
@@ -16,6 +16,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             {/* // Card Mobile */}
             <div
                 onClick={() => {
+                    toggleIsDetailOpen();
                     setSelectedPodcastId(id);
                     setSelectedPodcastData(podcastData);
                 }}
@@ -49,6 +50,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             {/* // Card Desktop */}
             <div
                 onClick={() => {
+                    toggleIsDetailOpen();
                     setSelectedPodcastId(id);
                     setSelectedPodcastData(podcastData);
                 }}
