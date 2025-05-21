@@ -4,7 +4,7 @@ const DetailModal = () => {
     return (
         <Fragment>
             {/* Detail Modal */}
-            <div className="w-[100vw] h-[90vh] md:w-[481px] md:h-[100%] overflow-y-auto bg-[#0F0F2DCC] backdrop-blur-[30px] md:bg-[#0F0F2D] fixed bottom-0 md:top-0 md:left-0 flex flex-col justify-start items-center py-8 px-12 gap-10 text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]">
+            <div className="w-[100vw] h-[90vh] md:w-[481px] md:h-[100%] overflow-y-auto bg-[#0F0F2DCC] backdrop-blur-[30px] md:bg-[#0F0F2D] fixed z-10 bottom-0 md:top-0 md:left-0 flex flex-col justify-start items-center py-8 px-12 gap-10 text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]">
                 <div className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white" />
                 <div className="w-full flex justify-between items-center">
                     <img
@@ -30,7 +30,7 @@ const DetailModal = () => {
                         friends.
                     </p>
                 </div>
-                <div className="w-full flex flex-col justify-start items-center gap-2">
+                <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
                     <h5 className="text-xl font-bold self-start">
                         47 episodios
                     </h5>
@@ -54,7 +54,7 @@ const DetailModal = () => {
                                         <img
                                             src="/src/assets/play-icon.svg"
                                             alt="play icon"
-                                            className="w-[18px] h-[18px] relative left-[1px]"
+                                            className="w-[14px] md:w-[18px] h-[14px] md:h-[18px] relative left-[1px]"
                                         />
                                     </div>
                                 </div>
