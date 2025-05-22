@@ -6,6 +6,7 @@ import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import DetailSkeleton from "../skeletons/DetailSkeleton";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import SafeHtmlContent from "../SafeHtmlContent";
+import { useAnimateDetail } from "@/hooks/useAnimateDetail";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
@@ -14,6 +15,16 @@ const DetailModal = () => {
     const { isPlayerOpen, togglePlayer, setEpisode } = usePlayerStore();
     const { image, title, description } = selectedPodcastData || {};
     const { data, isLoading } = usePodcastEpisodes();
+    const {
+        showDetail,
+        toggleShowDetail,
+        scrollRef,
+        imageScale,
+        descriptionOpacity,
+        isDetailMinimized,
+        descriptionHeight,
+        descriptionRef,
+    } = useAnimateDetail(description ?? "");
 
     const handleKeyDown = useCallback(
         ({ key }: KeyboardEvent): void => {
@@ -40,54 +51,98 @@ const DetailModal = () => {
         };
     }, [isDetailOpen]);
 
+    const handleCloseDetail = () => {
+        if (showDetail) toggleShowDetail();
+        toggleIsDetailOpen();
+    };
+
     return (
         <Fragment>
             {/* Backdrop Overlay */}
             <div
-                onClick={toggleIsDetailOpen}
+                onClick={handleCloseDetail}
                 className={
                     !isDetailOpen ? "hidden" : `w-screen h-screen fixed z-10`
                 }
             />
             {/* Detail Modal */}
             <div
-                className={`w-[100vw] h-[90vh] md:w-[481px] md:h-[100%] bg-[#0F0F2DCC] backdrop-blur-[30px] md:bg-[#0F0F2D] fixed z-10 ${
+                ref={scrollRef}
+                className={`overflow-y-auto w-[100vw] h-[90vh] md:w-[481px] md:h-[100%] bg-[#0F0F2D] fixed z-10 ${
                     isDetailOpen ? "bottom-0" : "-bottom-[100vh]"
                 } md:top-0 ${
                     isDetailOpen ? "md:left-0" : "md:-left-500"
-                } duration-600 ease-in-out flex flex-col justify-start items-center py-8 gap-6 text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]`}
+                } duration-600 ease-in-out flex flex-col justify-start items-center text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]`}
             >
                 <div className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white" />
-                <div className="w-full flex justify-between items-center px-12">
-                    <img
-                        src="/src/assets/star-icon.svg"
-                        alt="favorite icon"
-                        className="cursor-pointer"
-                        onClick={() =>
-                            selectedPodcastData &&
-                            handleFavorite(selectedPodcastData)
-                        }
-                    />
-                    <img
-                        src="/src/assets/close-icon.svg"
-                        alt="close icon"
-                        className="cursor-pointer"
-                        onClick={toggleIsDetailOpen}
-                    />
-                </div>
-                <div className="w-full overflow-y-auto px-6 md:px-12 flex flex-col gap-10">
-                    <div className="w-full flex flex-col justify-start items-center gap-4">
+                <div className="w-full flex flex-col sticky top-0 gap-8 py-8 bg-[#0F0F2D]">
+                    <div className="w-full flex justify-between items-center px-12">
                         <img
-                            className="w-[230px] h-[230px] rounded-[20px] "
+                            src="/src/assets/star-icon.svg"
+                            alt="favorite icon"
+                            className="cursor-pointer"
+                            onClick={() =>
+                                selectedPodcastData &&
+                                handleFavorite(selectedPodcastData)
+                            }
+                        />
+                        <img
+                            src="/src/assets/close-icon.svg"
+                            alt="close icon"
+                            className="cursor-pointer"
+                            onClick={handleCloseDetail}
+                        />
+                    </div>
+                    <div className="w-full flex flex-col justify-start items-center gap-4 px-6 md:px-12">
+                        <img
+                            className="transition-all duration-100 ease-in-out rounded-[20px]"
+                            style={{
+                                width: `${230 * imageScale}px`,
+                                height: `${230 * imageScale}px`,
+                            }}
                             src={image}
                             alt="podcast image"
                         />
-                        <h4 className="text-[26px] font-black text-center">{title}</h4>
-                        <SafeHtmlContent
-                            className="text-base font-medium text-center"
-                            content={description}
-                        />
+                        <h4
+                            className="font-black text-center"
+                            style={{
+                                fontSize: isDetailMinimized ? "18px" : "26px",
+                            }}
+                        >
+                            {title}
+                        </h4>
+                        <div
+                            className={`${
+                                showDetail ? "max-h-full " : "max-h-[70px]"
+                            } overflow-hidden duration-300 ease-in-out relative flex justify-start items-start`}
+                            style={{
+                                opacity: descriptionOpacity,
+                                display: isDetailMinimized ? "none" : "block",
+                            }}
+                        >
+                            <SafeHtmlContent
+                                ref={descriptionRef}
+                                className="text-base font-medium text-center"
+                                content={description}
+                            />
+                        </div>
+                        {descriptionHeight >= 75 && (
+                            <img
+                                src="/src/assets/chevron-icon.svg"
+                                className={`w-[16px] bottom-0 ${
+                                    showDetail ? "rotate-270" : "rotate-90"
+                                } cursor-pointer duration-300 ease-in-out -mt-2`}
+                                onClick={toggleShowDetail}
+                                style={{
+                                    display: isDetailMinimized
+                                        ? "none"
+                                        : "block",
+                                }}
+                            />
+                        )}
                     </div>
+                </div>
+                <div className="w-full px-6 md:px-12 flex flex-col gap-10 flex-1 pb-8">
                     <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
                         {isLoading ? (
                             <DetailSkeleton />
