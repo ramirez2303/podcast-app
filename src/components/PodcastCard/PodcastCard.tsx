@@ -32,7 +32,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                     }}
                 />
                 <div className="flex flex-col w-full max-h-[80px]">
-                    <h3 className="text-xl font-black text-ellipsis overflow-hidden">
+                    <h3 className="text-xl font-black text-ellipsis overflow-hidden ">
                         {title}
                     </h3>
                     <p className="text-sm/4 font-regular max-w-[50vw] max-h-[34px] text-ellipsis overflow-hidden">

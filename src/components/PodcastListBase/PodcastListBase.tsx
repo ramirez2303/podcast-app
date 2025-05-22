@@ -14,7 +14,7 @@ const PodcastListBase = ({
 }: // error,
 PodcastListBaseProps) => {
     return (
-        <div className="w-full flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-4">
+        <div className="w-full flex flex-col md:grid max-[980px]:grid-cols-2 max-[1260px]:grid-cols-3 min-[1260px]:grid-cols-4 gap-6 md:gap-4">
             {isLoading
                 ? Array(8)
                       .fill({})

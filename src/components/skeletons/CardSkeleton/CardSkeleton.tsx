@@ -20,7 +20,7 @@ const CardSkeleton = () => {
             </div>
 
             {/* // Skeleton Desktop */}
-            <div className="relative hidden md:flex w-[270px] h-[344px] flex flex-col justify-between p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out bg-gray-50 border border-gray-200 shadow-xl">
+            <div className="relative hidden md:flex w-[270px] h-[344px] flex flex-col justify-between p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out bg-gray-100 border border-gray-200 shadow-xl">
                 <div className="flex justify-end">
                     <Skeleton width="30px" height="30px" />
                 </div>
