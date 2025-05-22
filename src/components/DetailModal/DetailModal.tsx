@@ -4,21 +4,23 @@ import { usePlayerStore } from "../../stores/usePlayerStore";
 import { useEffect, useCallback } from "react";
 import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import DetailSkeleton from "../skeletons/DetailSkeleton";
+import { useFavoritesStore } from "@/stores/useFavoritesStore";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
         usePodcastDetailStore();
+    const { handleFavorite } = useFavoritesStore();
     const { isPlayerOpen, togglePlayer, setEpisode } = usePlayerStore();
     const { image, title, description } = selectedPodcastData || {};
     const { data, isLoading } = usePodcastEpisodes();
 
     const handleKeyDown = useCallback(
         ({ key }: KeyboardEvent): void => {
-            if (key === "Escape") {
+            if (key === "Escape" && isDetailOpen) {
                 toggleIsDetailOpen();
             }
         },
-        [toggleIsDetailOpen]
+        [toggleIsDetailOpen, isDetailOpen]
     );
 
     useEffect(() => {
@@ -60,6 +62,10 @@ const DetailModal = () => {
                         src="/src/assets/star-icon.svg"
                         alt="favorite icon"
                         className="cursor-pointer"
+                        onClick={() =>
+                            selectedPodcastData &&
+                            handleFavorite(selectedPodcastData)
+                        }
                     />
                     <img
                         src="/src/assets/close-icon.svg"
