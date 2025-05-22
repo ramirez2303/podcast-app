@@ -8,7 +8,7 @@ import DetailSkeleton from "../skeletons/DetailSkeleton";
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
         usePodcastDetailStore();
-    const { isPlayerOpen, togglePlayer } = usePlayerStore();
+    const { isPlayerOpen, togglePlayer, setEpisode } = usePlayerStore();
     const { image, title, description } = selectedPodcastData || {};
     const { data, isLoading } = usePodcastEpisodes();
 
@@ -110,10 +110,15 @@ const DetailModal = () => {
                                                 </div>
                                             </div>
                                             <div
-                                                onClick={() =>
-                                                    !isPlayerOpen &&
-                                                    togglePlayer()
-                                                }
+                                                onClick={() => {
+                                                    if (!isPlayerOpen)
+                                                        togglePlayer();
+                                                    setEpisode({
+                                                        ...item,
+                                                        podcastTitle:
+                                                            title ?? "",
+                                                    });
+                                                }}
                                                 className="w-fit h-fit p-3 ml-4 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer self-end"
                                             >
                                                 <img

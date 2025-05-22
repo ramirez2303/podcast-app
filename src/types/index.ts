@@ -26,6 +26,7 @@ export type PodcastResponse = {
 
 export type Episode = {
     id: number;
+    podcastTitle: string;
     title: string;
     link: string;
     description: string;

@@ -1,21 +1,15 @@
+import type { Episode } from "@/types";
 import { create } from "zustand";
 
-type Episode = {
-    id: string;
-    title: string;
-    audioUrl: string;
-    podcastTitle: string;
-};
-
 type PlayerStore = {
-    currentEpisode: Episode | null;
+    currentEpisode?: Episode;
     setEpisode: (episode: Episode) => void;
     isPlayerOpen: boolean;
     togglePlayer: () => void;
 };
 
 export const usePlayerStore = create<PlayerStore>((set) => ({
-    currentEpisode: null,
+    currentEpisode: undefined,
     setEpisode: (episode) =>
         set({ currentEpisode: episode, isPlayerOpen: true }),
     isPlayerOpen: false,
