@@ -5,6 +5,7 @@ import { useEffect, useCallback } from "react";
 import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import DetailSkeleton from "../skeletons/DetailSkeleton";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import SafeHtmlContent from "../SafeHtmlContent";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
@@ -81,10 +82,11 @@ const DetailModal = () => {
                             src={image}
                             alt="podcast image"
                         />
-                        <h4 className="text-[26px] font-black">{title}</h4>
-                        <p className="text-base font-medium text-center">
-                            {description}
-                        </p>
+                        <h4 className="text-[26px] font-black text-center">{title}</h4>
+                        <SafeHtmlContent
+                            className="text-base font-medium text-center"
+                            content={description}
+                        />
                     </div>
                     <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
                         {isLoading ? (

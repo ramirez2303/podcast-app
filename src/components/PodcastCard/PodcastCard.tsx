@@ -2,6 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
 import type { Podcast } from "@/types";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import SafeHtmlContent from "../SafeHtmlContent";
 
 interface PodcastCardProps {
     podcastData: Podcast;
@@ -45,7 +46,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             </div>
 
             {/* // Card Desktop */}
-            <div className="relative hidden md:flex max-w-[270px] h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg">
+            <div className="relative hidden md:block max-w-[270px] min-h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg">
                 <button
                     className="w-[30px] h-[30px] absolute top-2 right-2 self-end cursor-pointer"
                     onClick={() => handleFavorite(podcastData)}
@@ -57,7 +58,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                 </button>
                 <div
                     onClick={() => handleOpenDetail(podcastData)}
-                    className="max-w-[270px] h-full flex items-end"
+                    className="h-full flex justify-center items-end"
                 >
                     <div
                         className="absolute w-full h-full top-0 left-0 rounded-xl -z-2"
@@ -75,13 +76,14 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                                 "linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 33.16%, rgba(0, 0, 0, 1) 100%)",
                         }}
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col w-full">
                         <h3 className="text-lg font-black whitespace-nowrap text-ellipsis overflow-hidden">
                             {title}
                         </h3>
-                        <p className="text-sm font-bold max-h-[4.5rem] text-ellipsis overflow-hidden">
-                            {description}
-                        </p>
+                        <SafeHtmlContent
+                            className="text-sm font-bold max-h-[4.5rem] text-ellipsis overflow-hidden"
+                            content={description}
+                        />
                         <span className="flex items-center gap-2 mt-4">
                             <img
                                 src="/src/assets/person-icon.svg"
