@@ -1,12 +1,13 @@
-import { Fragment } from "react/jsx-runtime";
-import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
-import { usePlayerStore } from "../../stores/usePlayerStore";
-import { useEffect, useCallback } from "react";
-import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
-import DetailSkeleton from "../skeletons/DetailSkeleton";
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
-import SafeHtmlContent from "../SafeHtmlContent";
 import { useAnimateDetail } from "@/hooks/useAnimateDetail";
+import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
+import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import { useCallback, useEffect } from "react";
+import { Fragment } from "react/jsx-runtime";
+import { usePlayerStore } from "../../stores/usePlayerStore";
+import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
+import PodcastCover from "../PodcastCover";
+import SafeHtmlContent from "../SafeHtmlContent";
+import DetailSkeleton from "../skeletons/DetailSkeleton";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
@@ -77,7 +78,7 @@ const DetailModal = () => {
                 <div className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white" />
                 <div className="w-full flex flex-col sticky top-0 gap-8 py-8 bg-[#0F0F2D]">
                     <div className="w-full flex justify-between items-center px-12">
-                        <img
+                        <PodcastCover
                             src="/src/assets/star-icon.svg"
                             alt="favorite icon"
                             className="cursor-pointer"
@@ -158,8 +159,8 @@ const DetailModal = () => {
                                             className="w-full flex px-4 py-4 justify-between items-center border-b border-[#ffffff4c]"
                                         >
                                             <div className="w-full flex gap-4 items-center">
-                                                <img
-                                                    className="w-[40px] h-[40px] rounded-lg"
+                                                <PodcastCover
+                                                    className="w-[40px] h-[40px]"
                                                     src={item.image}
                                                     alt="episode image"
                                                 />

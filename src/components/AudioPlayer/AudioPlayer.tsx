@@ -1,5 +1,6 @@
 import type { Episode } from "@/types";
 import { useRef, useState } from "react";
+import PodcastCover from "../PodcastCover";
 
 const AudioPlayer = ({ episode }: { episode?: Episode }) => {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -29,7 +30,7 @@ const AudioPlayer = ({ episode }: { episode?: Episode }) => {
                 onClick={togglePlay}
                 className="w-fit h-fit p-3 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer"
             >
-                <img
+                <PodcastCover
                     src={ButtonIcon}
                     alt="play icon"
                     className="w-[14px] md:w-[18px] h-[14px] md:h-[18px] relative left-[1px]"

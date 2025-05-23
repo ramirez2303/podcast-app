@@ -1,5 +1,6 @@
 import { usePlayerStore } from "../../stores/usePlayerStore";
 import AudioPlayer from "../AudioPlayer";
+import PodcastCover from "../PodcastCover";
 import TextMarquee from "../TextMarquee";
 
 const PlayerModal = () => {
@@ -23,9 +24,9 @@ const PlayerModal = () => {
             />
             <div className="w-full h-full flex md:flex-col justify-center items-center gap-4">
                 <div className="flex md:flex-col gap-4 justify-center items-center text-white md:mt-10">
-                    <img
-                        className="w-[68px] md:w-[200px] h-[68px] md:h-[200px] rounded-lg md:rounded-[14px]"
-                        src={currentEpisode?.image}
+                    <PodcastCover
+                        className="w-[68px] md:w-[200px] h-[68px] md:h-[200px]"
+                        src={currentEpisode?.image ?? ""}
                         alt="episode image"
                     />
                     <div className="flex flex-col flex-col-reverse justify-start items-start md:items-center gap-1 max-[768px]:min-w-[50vw] max-w-[380px] px-8">
