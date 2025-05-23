@@ -50,10 +50,7 @@ export const useAnimateDetail = (description: string) => {
         return Math.max(1 - scrolled / 50, 0);
     }, [scrollY, maxScrollStart]);
 
-    const isDetailMinimized = useMemo(
-        () => scrollY > fadeTriggerPoint,
-        [fadeTriggerPoint, scrollY]
-    );
+    const isDetailMinimized = descriptionOpacity === 0;
 
     return {
         showDetail,

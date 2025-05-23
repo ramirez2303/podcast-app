@@ -24,3 +24,17 @@ body {
     min-width: 100vw;
     min-height: 100vh;
 }
+
+@keyframes scroll-marquee {
+    0% {
+        transform: translateX(2%);
+    }
+    100% {
+        transform: translateX(-60%);
+    }
+}
+
+.animate-marquee {
+    animation: scroll-marquee 10s linear infinite alternate;
+    will-change: transform;
+}
