@@ -5,10 +5,9 @@ import TextMarquee from "../TextMarquee";
 
 const PlayerModal = () => {
     const { isPlayerOpen, togglePlayer, currentEpisode } = usePlayerStore();
-
     return (
         <div
-            className={`w-[100vw] md:max-w-[380px] md:h-[440px] fixed z-20 bottom-0 md:bottom-5 md:right-5 bg-[#0F0F2D] md:bg-[#0F0F2DCC] md:backdrop-blur-[30px] flex flex-col py-6 md:rounded-[39px] ${
+            className={`w-[100vw] md:max-w-[380px] md:h-[440px] fixed z-25 bottom-0 md:bottom-5 md:right-5 bg-[#0F0F2D] md:bg-[#0F0F2DCC] md:backdrop-blur-[30px] flex flex-col py-6 md:rounded-[39px] ${
                 !currentEpisode?.id && "hidden"
             } ${
                 isPlayerOpen
@@ -26,7 +25,7 @@ const PlayerModal = () => {
                 <div className="flex md:flex-col gap-4 justify-center items-center text-white md:mt-10">
                     <PodcastCover
                         className="w-[68px] md:w-[200px] h-[68px] md:h-[200px]"
-                        src={currentEpisode?.image ?? ""}
+                        src={currentEpisode?.image}
                         alt="episode image"
                     />
                     <div className="flex flex-col flex-col-reverse justify-start items-start md:items-center gap-1 max-[768px]:min-w-[50vw] max-w-[380px] px-8">

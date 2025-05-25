@@ -17,6 +17,7 @@ const TextMarquee = ({
 
         setShouldAnimate(textWidth > containerWidth);
     }, [text]);
+
     return (
         <div
             ref={containerRef}

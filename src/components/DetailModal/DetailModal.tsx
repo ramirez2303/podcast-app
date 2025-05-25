@@ -66,6 +66,7 @@ const DetailModal = () => {
                     !isDetailOpen ? "hidden" : `w-screen h-screen fixed z-10`
                 }
             />
+
             {/* Detail Modal */}
             <div
                 ref={scrollRef}
@@ -75,10 +76,17 @@ const DetailModal = () => {
                     isDetailOpen ? "md:left-0" : "md:-left-500"
                 } duration-600 ease-in-out flex flex-col justify-start items-center text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]`}
             >
-                <div className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white" />
-                <div className="w-full flex flex-col sticky top-0 gap-8 py-8 bg-[#0F0F2D]">
+                <div
+                    className={`w-full flex flex-col items-center ${
+                        isDetailMinimized ? "sticky" : "relative"
+                    } top-0 gap-8 py-8 bg-[#0F0F2D]`}
+                >
+                    <div
+                        className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white"
+                        onClick={handleCloseDetail}
+                    />
                     <div className="w-full flex justify-between items-center px-12">
-                        <PodcastCover
+                        <img
                             src="/src/assets/star-icon.svg"
                             alt="favorite icon"
                             className="cursor-pointer"

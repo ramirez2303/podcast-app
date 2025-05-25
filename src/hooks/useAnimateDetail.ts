@@ -36,7 +36,9 @@ export const useAnimateDetail = (description: string) => {
     const fadeTriggerPoint =
         descriptionHeight - (showDetail ? descriptionHeight * 0.33 : 80);
 
-    const maxScrollStart = Math.max(fadeTriggerPoint, 0);
+    const maxScrollStart = showDetail
+        ? descriptionHeight * 0.85
+        : Math.max(fadeTriggerPoint, 0);
 
     const imageScale = useMemo(() => {
         if (scrollY < maxScrollStart) return 1;
