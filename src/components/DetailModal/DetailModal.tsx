@@ -1,21 +1,14 @@
 import { useAnimateDetail } from "@/hooks/useAnimateDetail";
-import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import { useCallback, useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
-import { usePlayerStore } from "../../stores/usePlayerStore";
 import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
-import PodcastCover from "../PodcastCover";
-import SafeHtmlContent from "../SafeHtmlContent";
-import DetailSkeleton from "../skeletons/DetailSkeleton";
+import Episodes from "./components/Episodes";
+import DetailHeader from "./components/DetailHeader";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =
         usePodcastDetailStore();
-    const { handleFavorite } = useFavoritesStore();
-    const { isPlayerOpen, togglePlayer, setEpisode } = usePlayerStore();
     const { image, title, description } = selectedPodcastData || {};
-    const { data, isLoading } = usePodcastEpisodes();
     const {
         showDetail,
         toggleShowDetail,
@@ -76,135 +69,21 @@ const DetailModal = () => {
                     isDetailOpen ? "md:left-0" : "md:-left-500"
                 } duration-600 ease-in-out flex flex-col justify-start items-center text-white max-[768px]:rounded-t-[30px] md:rounded-r-[30px]`}
             >
-                <div
-                    className={`w-full flex flex-col items-center ${
-                        isDetailMinimized ? "sticky" : "relative"
-                    } top-0 gap-8 py-8 bg-[#0F0F2D]`}
-                >
-                    <div
-                        className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white"
-                        onClick={handleCloseDetail}
-                    />
-                    <div className="w-full flex justify-between items-center px-12">
-                        <img
-                            src="/src/assets/star-icon.svg"
-                            alt="favorite icon"
-                            className="cursor-pointer"
-                            onClick={() =>
-                                selectedPodcastData &&
-                                handleFavorite(selectedPodcastData)
-                            }
-                        />
-                        <img
-                            src="/src/assets/close-icon.svg"
-                            alt="close icon"
-                            className="cursor-pointer"
-                            onClick={handleCloseDetail}
-                        />
-                    </div>
-                    <div className="w-full flex flex-col justify-start items-center gap-4 px-6 md:px-12">
-                        <img
-                            className="transition-all duration-100 ease-in-out rounded-[20px]"
-                            style={{
-                                width: `${230 * imageScale}px`,
-                                height: `${230 * imageScale}px`,
-                            }}
-                            src={image}
-                            alt="podcast image"
-                        />
-                        <h4
-                            className="font-black text-center"
-                            style={{
-                                fontSize: isDetailMinimized ? "18px" : "26px",
-                            }}
-                        >
-                            {title}
-                        </h4>
-                        <div
-                            className={`${
-                                showDetail ? "max-h-full " : "max-h-[70px]"
-                            } overflow-hidden duration-300 ease-in-out relative flex justify-start items-start`}
-                            style={{
-                                opacity: descriptionOpacity,
-                                display: isDetailMinimized ? "none" : "block",
-                            }}
-                        >
-                            <SafeHtmlContent
-                                ref={descriptionRef}
-                                className="text-base font-medium text-center"
-                                content={description}
-                            />
-                        </div>
-                        {descriptionHeight >= 75 && (
-                            <img
-                                src="/src/assets/chevron-icon.svg"
-                                className={`w-[16px] bottom-0 ${
-                                    showDetail ? "rotate-270" : "rotate-90"
-                                } cursor-pointer duration-300 ease-in-out -mt-2`}
-                                onClick={toggleShowDetail}
-                                style={{
-                                    display: isDetailMinimized
-                                        ? "none"
-                                        : "block",
-                                }}
-                            />
-                        )}
-                    </div>
-                </div>
+                <DetailHeader
+                    imageScale={imageScale}
+                    descriptionOpacity={descriptionOpacity}
+                    isDetailMinimized={isDetailMinimized}
+                    descriptionHeight={descriptionHeight}
+                    descriptionRef={descriptionRef}
+                    handleCloseDetail={handleCloseDetail}
+                    image={image ?? ""}
+                    title={title ?? ""}
+                    description={description ?? ""}
+                    showDetail={showDetail}
+                    toggleShowDetail={toggleShowDetail}
+                />
                 <div className="w-full px-6 md:px-12 flex flex-col gap-10 flex-1 pb-8">
-                    <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
-                        {isLoading ? (
-                            <DetailSkeleton />
-                        ) : (
-                            <>
-                                <h5 className="text-xl font-bold self-start">
-                                    {data?.count ?? 0} episodios
-                                </h5>
-                                <div className="w-full flex flex-col">
-                                    {data?.items?.map((item, ix) => (
-                                        <div
-                                            key={ix}
-                                            className="w-full flex px-4 py-4 justify-between items-center border-b border-[#ffffff4c]"
-                                        >
-                                            <div className="w-full flex gap-4 items-center">
-                                                <PodcastCover
-                                                    className="w-[40px] h-[40px]"
-                                                    src={item.image}
-                                                    alt="episode image"
-                                                />
-                                                <div className="flex flex-col justify-center items-start">
-                                                    <span className="max-w-[12rem] md:max-w-[15rem] text-base font-bold whitespace-nowrap text-ellipsis overflow-hidden">
-                                                        {item.title}
-                                                    </span>
-                                                    <span className="text-sm font-regular">
-                                                        {item.duration} mins
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                onClick={() => {
-                                                    if (!isPlayerOpen)
-                                                        togglePlayer();
-                                                    setEpisode({
-                                                        ...item,
-                                                        podcastTitle:
-                                                            title ?? "",
-                                                    });
-                                                }}
-                                                className="w-fit h-fit p-3 ml-4 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer self-end"
-                                            >
-                                                <img
-                                                    src="/src/assets/play-icon.svg"
-                                                    alt="play icon"
-                                                    className="w-[14px] md:min-w-[18px] h-[14px] md:h-[18px] relative left-[1px]"
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                    </div>
+                    <Episodes />
                 </div>
             </div>
         </Fragment>

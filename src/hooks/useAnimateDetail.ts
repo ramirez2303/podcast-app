@@ -9,6 +9,7 @@ export const useAnimateDetail = (description: string) => {
 
     const [descriptionHeight, setDescriptionHeight] = useState<number>(0);
     const descriptionRef = useRef<HTMLDivElement>(null);
+
     const getDescriptionHeight = useCallback(() => {
         if (descriptionRef?.current) {
             setDescriptionHeight(descriptionRef?.current.offsetHeight);
