@@ -1,3 +1,4 @@
+import EmptyState from "@/components/EmptyState";
 import PodcastListBase from "@/components/PodcastListBase";
 import { useTrendingPodcast } from "@/hooks/useTrendingPodcast";
 import { useTrendingStore } from "@/stores/useTrendingStore";
@@ -10,7 +11,18 @@ const TrendingSection = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <PodcastListBase podcasts={visibleResults} isLoading={isLoading} />
+            {visibleResults?.length ? (
+                <PodcastListBase
+                    podcasts={visibleResults}
+                    isLoading={isLoading}
+                />
+            ) : (
+                <EmptyState
+                    message="No hay resultados disponibles"
+                    imageUrl="/src/assets/search-no-result.png"
+                    imageAlt="No results found image"
+                />
+            )}
             <InView onChange={(inView) => inView && loadMore()} />
         </div>
     );

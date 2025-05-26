@@ -1,6 +1,5 @@
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import ChipButton from "../../../../../../components/ChipButton";
-import { useEffect } from "react";
 
 type PodcastsChipsProp = {
     chipSelected: "trending" | "favorites";
@@ -11,14 +10,7 @@ const PodcastsChips = ({
     chipSelected,
     handleChipSelected,
 }: PodcastsChipsProp) => {
-    const { favorites, getFavoritesList } = useFavoritesStore();
-
-    useEffect(() => {
-        if (!getFavoritesList().length) {
-            handleChipSelected("trending");
-        }
-    }, [favorites, getFavoritesList, handleChipSelected]);
-
+    const { getFavoritesList } = useFavoritesStore();
     return (
         <div className="flex items-center gap-2 px-8 md:px-0 pt-[18px]">
             <ChipButton
@@ -31,7 +23,6 @@ const PodcastsChips = ({
                 onClick={() => handleChipSelected("favorites")}
                 icon="/src/assets/filled-star-icon.svg"
                 count={getFavoritesList()?.length}
-                disabled={!getFavoritesList()?.length}
                 selected={chipSelected === "favorites"}
             />
         </div>

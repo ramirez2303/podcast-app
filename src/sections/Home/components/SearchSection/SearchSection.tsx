@@ -1,3 +1,4 @@
+import EmptyState from "@/components/EmptyState";
 import PodcastListBase from "@/components/PodcastListBase";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { InView } from "react-intersection-observer";
@@ -9,10 +10,18 @@ const SearchSection = () => {
     const visibleResults = searchResults.slice(0, visibleCount);
     return (
         <Fragment>
-            <PodcastListBase
-                podcasts={visibleResults}
-                isLoading={isLoadingSearch}
-            />
+            {!visibleResults.length ? (
+                <EmptyState
+                    message="No se pudieron encontrar resultados"
+                    imageUrl="/src/assets/search-no-result.png"
+                    imageAlt="No results found image"
+                />
+            ) : (
+                <PodcastListBase
+                    podcasts={visibleResults}
+                    isLoading={isLoadingSearch}
+                />
+            )}
             <InView onChange={(inView) => inView && loadMore()} />
         </Fragment>
     );
