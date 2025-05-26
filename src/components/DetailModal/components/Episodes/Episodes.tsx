@@ -2,6 +2,7 @@ import PodcastCover from "@/components/PodcastCover";
 import DetailSkeleton from "@/components/skeletons/DetailSkeleton";
 import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import { InView } from "react-intersection-observer";
 
 type EpisodesProps = {
     title?: string;
@@ -9,7 +10,9 @@ type EpisodesProps = {
 
 const Episodes = ({ title }: EpisodesProps) => {
     const { data, isLoading } = usePodcastEpisodes();
-    const { isPlayerOpen, togglePlayer, setEpisode } = usePlayerStore();
+    const { isPlayerOpen, togglePlayer, setEpisode, visibleCount, loadMore } =
+        usePlayerStore();
+    const visibleEpisodes = data?.items?.slice(0, visibleCount) || [];
 
     return (
         <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
@@ -21,7 +24,7 @@ const Episodes = ({ title }: EpisodesProps) => {
                         {data?.count ?? 0} episodios
                     </h5>
                     <div className="w-full flex flex-col">
-                        {data?.items?.map((item, ix) => (
+                        {visibleEpisodes?.map((item, ix) => (
                             <div
                                 key={ix}
                                 className="w-full flex px-4 py-4 justify-between items-center border-b border-[#ffffff4c]"
@@ -62,6 +65,7 @@ const Episodes = ({ title }: EpisodesProps) => {
                     </div>
                 </>
             )}
+            <InView onChange={(inView) => inView && loadMore()} />
         </div>
     );
 };

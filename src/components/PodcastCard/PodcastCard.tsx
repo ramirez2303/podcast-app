@@ -34,7 +34,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                         {title}
                     </h3>
                     <SafeHtmlContent
-                        className="text-sm/4 font-regular max-w-[50vw] max-h-[34px] text-ellipsis overflow-hidden"
+                        className="text-sm/4 font-regular max-w-[50vw] max-h-[34px] text-ellipsis overflow-hidden pointer-events-none"
                         content={description}
                     />
                     <p className="text-xs font-medium mt-1">844 Episodios</p>
@@ -82,7 +82,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                             {title}
                         </h3>
                         <SafeHtmlContent
-                            className="text-sm font-bold max-h-[4rem] text-ellipsis overflow-hidden"
+                            className="text-sm font-bold max-h-[4rem] text-ellipsis overflow-hidden pointer-events-none"
                             content={description}
                         />
                         <span className="flex items-center gap-2 mt-4">

@@ -9,6 +9,8 @@ type SearchStore = {
     setIsLoadingSearch: (isLoading: boolean) => void;
     isSearching: boolean;
     setIsSearching: (isSearching: boolean) => void;
+    visibleCount: number;
+    loadMore: () => void;
 };
 
 export const useSearchStore = create<SearchStore>((set) => ({
@@ -19,4 +21,9 @@ export const useSearchStore = create<SearchStore>((set) => ({
     setIsLoadingSearch: (isLoading) => set({ isLoadingSearch: isLoading }),
     isSearching: false,
     setIsSearching: (isSearching) => set({ isSearching: isSearching }),
+    visibleCount: 8,
+    loadMore: () =>
+        set((state) => ({
+            visibleCount: state.visibleCount + 8,
+        })),
 }));
