@@ -11,16 +11,16 @@ const TrendingSection = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            {visibleResults?.length ? (
-                <PodcastListBase
-                    podcasts={visibleResults}
-                    isLoading={isLoading}
-                />
-            ) : (
+            {!visibleResults?.length && !isLoading ? (
                 <EmptyState
                     message="No hay resultados disponibles"
                     imageUrl="/src/assets/search-no-result.png"
                     imageAlt="No results found image"
+                />
+            ) : (
+                <PodcastListBase
+                    podcasts={visibleResults}
+                    isLoading={isLoading}
                 />
             )}
             <InView onChange={(inView) => inView && loadMore()} />

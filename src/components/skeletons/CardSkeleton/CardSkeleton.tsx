@@ -7,7 +7,7 @@ const CardSkeleton = () => {
             {/* // Skeleton Mobile */}
             <div className="flex md:hidden items-center gap-4 w-full">
                 <Skeleton width="80px" height="80px" />
-                <div className="w-full flex flex-col w-full max-h-[80px] gap-2">
+                <div className="flex flex-col w-[50vw] max-h-[80px] gap-2">
                     <Skeleton width="70%" height="16px" />
                     <Skeleton width="100%" height="16px" />
                     <Skeleton width="40%" height="16px" />

@@ -4,6 +4,7 @@ import { create } from "zustand";
 type PlayerStore = {
     currentEpisode?: Episode;
     setEpisode: (episode: Episode) => void;
+    clearEpisode: () => void;
     isPlayerOpen: boolean;
     togglePlayer: () => void;
     visibleCount: number;
@@ -12,8 +13,8 @@ type PlayerStore = {
 
 export const usePlayerStore = create<PlayerStore>((set) => ({
     currentEpisode: undefined,
-    setEpisode: (episode) =>
-        set({ currentEpisode: episode, isPlayerOpen: true }),
+    setEpisode: (episode) => set({ currentEpisode: episode }),
+    clearEpisode: () => set({ currentEpisode: undefined }),
     isPlayerOpen: false,
     togglePlayer: () => set((state) => ({ isPlayerOpen: !state.isPlayerOpen })),
     visibleCount: 10,

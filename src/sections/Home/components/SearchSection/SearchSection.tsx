@@ -10,7 +10,7 @@ const SearchSection = () => {
     const visibleResults = searchResults.slice(0, visibleCount);
     return (
         <Fragment>
-            {!visibleResults.length ? (
+            {!visibleResults.length && !isLoadingSearch ? (
                 <EmptyState
                     message="No se pudieron encontrar resultados"
                     imageUrl="/src/assets/search-no-result.png"
