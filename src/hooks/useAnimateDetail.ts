@@ -16,10 +16,6 @@ export const useAnimateDetail = (description: string) => {
         }
     }, []);
 
-    useEffect(() => {
-        getDescriptionHeight();
-    }, [showDetail, getDescriptionHeight, description]);
-
     const [scrollY, setScrollY] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -34,8 +30,7 @@ export const useAnimateDetail = (description: string) => {
         return () => scrollElement.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const fadeTriggerPoint =
-        descriptionHeight - (showDetail ? descriptionHeight * 0.33 : 80);
+    const fadeTriggerPoint = descriptionHeight * 0.15;
 
     const maxScrollStart = showDetail
         ? descriptionHeight * 0.85
@@ -54,6 +49,14 @@ export const useAnimateDetail = (description: string) => {
     }, [scrollY, maxScrollStart]);
 
     const isDetailMinimized = descriptionOpacity === 0;
+
+    useEffect(() => {
+        if (showDetail && isDetailMinimized) toggleShowDetail();
+    }, [showDetail, isDetailMinimized, toggleShowDetail]);
+
+    useEffect(() => {
+        getDescriptionHeight();
+    }, [showDetail, getDescriptionHeight, description, isDetailMinimized]);
 
     return {
         showDetail,

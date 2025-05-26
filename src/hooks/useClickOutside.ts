@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useClickOutside = () => {
+export const useClickOutside = (disableOutsideClick?: boolean) => {
     const [isOpen, setIsOpen] = useState(false);
     const componentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
+                !disableOutsideClick &&
                 componentRef.current &&
                 !componentRef.current.contains(event.target as Node)
             ) {
@@ -18,7 +19,7 @@ export const useClickOutside = () => {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, []);
+    }, [disableOutsideClick]);
 
     return {
         isOpen,

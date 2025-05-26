@@ -83,7 +83,7 @@ const DetailModal = () => {
                     toggleShowDetail={toggleShowDetail}
                 />
                 <div className="w-full px-6 md:px-12 flex flex-col gap-10 flex-1 pb-8">
-                    <Episodes />
+                    <Episodes title={title} />
                 </div>
             </div>
         </Fragment>

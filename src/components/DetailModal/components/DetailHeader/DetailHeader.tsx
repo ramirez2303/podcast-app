@@ -78,7 +78,7 @@ const DetailHeader = ({
                 </h4>
                 <div
                     className={`${
-                        showDetail ? "max-h-full " : "max-h-[70px]"
+                        showDetail ? "max-h-full" : "max-h-[70px]"
                     } overflow-hidden duration-300 ease-in-out relative flex justify-start items-start`}
                     style={{
                         opacity: descriptionOpacity,
