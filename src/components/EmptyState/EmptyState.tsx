@@ -20,7 +20,7 @@ const EmptyState = ({
                     className={`w-[60px] md:w-[160px] ${imageClassname}`}
                 />
             )}
-            <span className="text-xl font-bold">{message}</span>
+            <span className="text-lg md:text-xl font-bold">{message}</span>
         </div>
     );
 };

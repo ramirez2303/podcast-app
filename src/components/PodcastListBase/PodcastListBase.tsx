@@ -2,17 +2,12 @@ import type { PodcastList } from "@/types";
 import PodcastCard from "../PodcastCard";
 import CardSkeleton from "../skeletons/CardSkeleton";
 
-interface PodcastListBaseProps {
+type PodcastListBaseProps = {
     podcasts?: PodcastList;
     isLoading?: boolean;
-    // error?: string | null;
-}
+};
 
-const PodcastListBase = ({
-    podcasts,
-    isLoading,
-}: // error,
-PodcastListBaseProps) => {
+const PodcastListBase = ({ podcasts, isLoading }: PodcastListBaseProps) => {
     return (
         <div className="w-full flex flex-col md:grid max-[980px]:grid-cols-2 max-[1260px]:grid-cols-3 min-[1260px]:grid-cols-4 gap-6 md:gap-4">
             {isLoading
