@@ -14,14 +14,14 @@ describe("PlayerModal", () => {
         expect(screen.getByRole("button")).toBeInTheDocument();
     });
 
-    it("renders time correctly", () => {
+    it("renderizar el tiempo correctamente", () => {
         render(<PlayerModal />);
 
         expect(screen.getByText("0s")).toBeInTheDocument();
         expect(screen.getByText("120s")).toBeInTheDocument();
     });
 
-    it("calls togglePlay on button click", () => {
+    it("ejecutar togglePlay al clicker button", () => {
         render(<PlayerModal />);
         fireEvent.click(screen.getByRole("button"));
 
