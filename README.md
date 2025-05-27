@@ -16,7 +16,7 @@ Aplicación desarrollada como parte del challenge técnico de Longevo. Permite b
 
 ```bash
 src/
-├── assets/            # Íconos, imágenes, fuentes
+├── assets/            # Íconos, imágenes
 ├── components/        # Componentes generales
 │   ├── common/        # Componentes genéricos y reutilizables
 │   ├── modals/        # Modales como PlayerModal, DetailModal
