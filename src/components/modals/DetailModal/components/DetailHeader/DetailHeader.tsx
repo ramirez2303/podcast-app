@@ -35,9 +35,11 @@ const DetailHeader = ({
     const { selectedPodcastData } = usePodcastDetailStore();
     return (
         <div
-            className={`w-full flex flex-col items-center ${
-                isDetailMinimized ? "sticky" : "relative"
-            } top-0 gap-8 py-8 bg-[#0F0F2D]`}
+            className={`w-full flex flex-col items-center top-0 gap-8 py-8 bg-[#0F0F2D]`}
+            style={{
+                position: isDetailMinimized ? "sticky" : "relative",
+                zIndex: 10,
+            }}
         >
             <div
                 className="md:hidden absolute top-4 w-[55px] h-[3px] rounded-full bg-white"

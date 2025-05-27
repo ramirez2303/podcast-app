@@ -45,6 +45,16 @@ const DetailModal = () => {
         };
     }, [isDetailOpen]);
 
+    useEffect(() => {
+        const scrollToTop = () => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollTop = 0;
+            }
+        };
+
+        setTimeout(scrollToTop, 0);
+    }, [scrollRef, selectedPodcastData?.id]);
+
     const handleCloseDetail = () => {
         if (showDetail) toggleShowDetail();
         toggleIsDetailOpen();
@@ -82,7 +92,7 @@ const DetailModal = () => {
                     showDetail={showDetail}
                     toggleShowDetail={toggleShowDetail}
                 />
-                <div className="w-full px-6 md:px-12 flex flex-col gap-10 flex-1 pb-8">
+                <div className="w-full px-6 md:px-12 flex flex-col gap-10 flex-1 pb-8 relative z-0">
                     <Episodes title={title} />
                 </div>
             </div>
