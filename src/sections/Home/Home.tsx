@@ -17,7 +17,7 @@ const Home = () => {
         setChipSelected(chip);
 
     return (
-        <div className="min-w-[100vw] min-h-[100vh] flex flex-col gap-10 md:gap-6 relative">
+        <div className="min-w-[100vw] min-h-[100vh] flex flex-col gap-10 md:gap-6 relative font-[Raleway]">
             <Header
                 chipSelected={chipSelected}
                 handleChipSelected={handleChipSelected}

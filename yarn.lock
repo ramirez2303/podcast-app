@@ -283,6 +283,11 @@
     "@eslint/core" "^0.14.0"
     levn "^0.4.1"
 
+"@fontsource/raleway@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/@fontsource/raleway/-/raleway-5.2.5.tgz"
+  integrity sha512-gVFV8Yi8Y5h8sQw0U/F6TQID53DVIWPuRxqBLOBxwLbQma42JAwqTZ+pi3eDjpm20/rjS2XoVJH5hnMx1KFB+g==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.npmjs.org/@humanfs/core/-/core-0.19.1.tgz"
