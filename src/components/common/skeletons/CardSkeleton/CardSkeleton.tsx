@@ -1,5 +1,5 @@
+import Skeleton from "@/components/ui/Skeleton";
 import { Fragment } from "react/jsx-runtime";
-import Skeleton from "../Skeleton";
 
 const CardSkeleton = () => {
     return (

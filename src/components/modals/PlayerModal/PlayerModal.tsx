@@ -1,7 +1,7 @@
-import { usePlayerStore } from "../../stores/usePlayerStore";
-import PodcastCover from "../PodcastCover";
-import TextMarquee from "../TextMarquee";
+import PodcastCover from "@/components/ui/PodcastCover";
+import TextMarquee from "@/components/ui/TextMarquee";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
+import { usePlayerStore } from "@/stores/usePlayerStore";
 
 const PlayerModal = () => {
     const { isPlayerOpen, togglePlayer, currentEpisode, clearEpisode } =

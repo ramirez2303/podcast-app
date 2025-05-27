@@ -1,7 +1,7 @@
-import { Fragment } from "react/jsx-runtime";
-import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
-import type { Podcast } from "@/types";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
+import type { Podcast } from "@/types";
+import { Fragment } from "react/jsx-runtime";
 import SafeHtmlContent from "../SafeHtmlContent";
 
 interface PodcastCardProps {
@@ -19,6 +19,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             <div
                 onClick={() => handleOpenDetail(podcastData)}
                 className="flex md:hidden items-center gap-4 w-full"
+                data-testid="mobile-podcast-card"
             >
                 <div
                     className="min-w-[80px] h-[80px] bg-red-300 rounded-xl"
@@ -47,7 +48,10 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             </div>
 
             {/* // Card Desktop */}
-            <div className="relative hidden md:block max-w-[270px] min-h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg">
+            <div
+                data-testid="desktop-podcast-card"
+                className="relative hidden md:block max-w-[270px] min-h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg"
+            >
                 <button
                     className="w-[30px] h-[30px] absolute top-2 right-2 self-end cursor-pointer"
                     onClick={() => handleFavorite(podcastData)}

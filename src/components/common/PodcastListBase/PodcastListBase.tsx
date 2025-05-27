@@ -1,5 +1,5 @@
 import type { PodcastList } from "@/types";
-import PodcastCard from "../PodcastCard";
+import PodcastCard from "@/components/ui/PodcastCard";
 import CardSkeleton from "../skeletons/CardSkeleton";
 
 type PodcastListBaseProps = {

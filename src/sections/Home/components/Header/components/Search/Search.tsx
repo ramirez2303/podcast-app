@@ -1,5 +1,5 @@
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { useSearch } from "@/hooks/useSearch";
-import { useClickOutside } from "../../../../../../hooks/useClickOutside";
 import { useSearchStore } from "@/stores/useSearchStore";
 
 const Search = () => {

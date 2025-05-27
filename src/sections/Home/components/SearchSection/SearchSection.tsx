@@ -1,5 +1,5 @@
-import EmptyState from "@/components/EmptyState";
-import PodcastListBase from "@/components/PodcastListBase";
+import EmptyState from "@/components/common/EmptyState";
+import PodcastListBase from "@/components/common/PodcastListBase";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { InView } from "react-intersection-observer";
 import { Fragment } from "react/jsx-runtime";

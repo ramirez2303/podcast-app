@@ -1,5 +1,5 @@
+import ChipButton from "@/components/ui/ChipButton";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
-import ChipButton from "../../../../../../components/ChipButton";
 
 type PodcastsChipsProp = {
     chipSelected: "trending" | "favorites";

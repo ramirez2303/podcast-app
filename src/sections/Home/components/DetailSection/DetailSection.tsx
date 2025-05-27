@@ -1,6 +1,6 @@
+import DetailModal from "@/components/modals/DetailModal";
+import PlayerModal from "@/components/modals/PlayerModal";
 import { Fragment } from "react/jsx-runtime";
-import DetailModal from "../../../../components/DetailModal";
-import PlayerModal from "../../../../components/PlayerModal";
 
 const DetailSection = () => {
     return (

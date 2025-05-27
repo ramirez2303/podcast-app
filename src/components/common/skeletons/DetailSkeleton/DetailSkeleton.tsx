@@ -1,5 +1,5 @@
+import Skeleton from "@/components/ui/Skeleton";
 import { Fragment } from "react";
-import Skeleton from "../Skeleton";
 
 const DetailSkeleton = () => {
     return (

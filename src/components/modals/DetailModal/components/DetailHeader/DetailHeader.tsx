@@ -1,4 +1,4 @@
-import SafeHtmlContent from "@/components/SafeHtmlContent";
+import SafeHtmlContent from "@/components/ui/SafeHtmlContent";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
 

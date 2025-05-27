@@ -1,9 +1,9 @@
 import { useAnimateDetail } from "@/hooks/useAnimateDetail";
 import { useCallback, useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
-import { usePodcastDetailStore } from "../../stores/usePodcastDetailStore";
 import Episodes from "./components/Episodes";
 import DetailHeader from "./components/DetailHeader";
+import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
 
 const DetailModal = () => {
     const { selectedPodcastData, isDetailOpen, toggleIsDetailOpen } =

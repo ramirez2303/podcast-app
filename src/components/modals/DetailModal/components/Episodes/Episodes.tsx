@@ -1,6 +1,6 @@
-import EmptyState from "@/components/EmptyState";
-import PodcastCover from "@/components/PodcastCover";
-import DetailSkeleton from "@/components/skeletons/DetailSkeleton";
+import EmptyState from "@/components/common/EmptyState";
+import DetailSkeleton from "@/components/common/skeletons/DetailSkeleton";
+import PodcastCover from "@/components/ui/PodcastCover";
 import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { InView } from "react-intersection-observer";
