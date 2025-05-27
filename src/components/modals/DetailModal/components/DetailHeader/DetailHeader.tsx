@@ -33,6 +33,7 @@ const DetailHeader = ({
     toggleShowDetail,
 }: DetailHeaderProps) => {
     const { selectedPodcastData } = usePodcastDetailStore();
+    const isMobile = window.innerWidth <= 768;
     return (
         <div
             className={`w-full flex flex-col items-center top-0 gap-8 py-8 bg-[#0F0F2D]`}
@@ -58,8 +59,8 @@ const DetailHeader = ({
                 <PodcastCover
                     className="transition-all duration-300 ease-in-out rounded-[20px]"
                     style={{
-                        width: `${230 * imageScale}px`,
-                        height: `${230 * imageScale}px`,
+                        width: `${(isMobile ? 170 : 230) * imageScale}px`,
+                        height: `${(isMobile ? 170 : 230) * imageScale}px`,
                     }}
                     src={image}
                     alt="podcast image"

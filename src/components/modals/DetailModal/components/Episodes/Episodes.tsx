@@ -18,7 +18,11 @@ const Episodes = ({ title }: EpisodesProps) => {
     const visibleEpisodes = data?.items?.slice(0, visibleCount) || [];
 
     return (
-        <div className="w-full flex flex-col justify-start items-center gap-2 pb-26 md:pb-0">
+        <div
+            className={`w-full flex flex-col justify-start items-center gap-2 ${
+                isPlayerOpen && "pb-26"
+            } md:pb-0`}
+        >
             {isLoading ? (
                 <DetailSkeleton />
             ) : (

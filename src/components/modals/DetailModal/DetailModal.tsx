@@ -73,7 +73,7 @@ const DetailModal = () => {
             {/* Detail Modal */}
             <div
                 ref={scrollRef}
-                className={`overflow-y-auto w-[100vw] h-[85vh] md:w-[480px] md:h-[100%] bg-[#0F0F2D] fixed z-10 ${
+                className={`overflow-y-auto w-[100vw] max-h-[85vh] md:w-[480px] md:h-[100%] bg-[#0f0f2d] backdrop-filter-[30px] fixed z-10 ${
                     isDetailOpen ? "bottom-0" : "-bottom-[100vh]"
                 } md:top-0 ${
                     isDetailOpen ? "md:left-0" : "md:-left-500"
