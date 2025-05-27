@@ -1,5 +1,6 @@
+import FavoriteButton from "@/components/common/FavoriteButton";
+import PodcastCover from "@/components/ui/PodcastCover";
 import SafeHtmlContent from "@/components/ui/SafeHtmlContent";
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
 
 type DetailHeaderProps = {
@@ -29,7 +30,6 @@ const DetailHeader = ({
     showDetail,
     toggleShowDetail,
 }: DetailHeaderProps) => {
-    const { handleFavorite } = useFavoritesStore();
     const { selectedPodcastData } = usePodcastDetailStore();
     return (
         <div
@@ -42,15 +42,7 @@ const DetailHeader = ({
                 onClick={handleCloseDetail}
             />
             <div className="w-full flex justify-between items-center px-12">
-                <img
-                    src="/src/assets/star-icon.svg"
-                    alt="favorite icon"
-                    className="cursor-pointer"
-                    onClick={() =>
-                        selectedPodcastData &&
-                        handleFavorite(selectedPodcastData)
-                    }
-                />
+                <FavoriteButton podcastData={selectedPodcastData} />
                 <img
                     src="/src/assets/close-icon.svg"
                     alt="close icon"
@@ -59,7 +51,7 @@ const DetailHeader = ({
                 />
             </div>
             <div className="w-full flex flex-col justify-start items-center gap-4 px-6 md:px-12">
-                <img
+                <PodcastCover
                     className="transition-all duration-300 ease-in-out rounded-[20px]"
                     style={{
                         width: `${230 * imageScale}px`,

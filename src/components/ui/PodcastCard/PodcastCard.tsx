@@ -1,8 +1,8 @@
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
 import type { Podcast } from "@/types";
 import { Fragment } from "react/jsx-runtime";
 import SafeHtmlContent from "../SafeHtmlContent";
+import FavoriteButton from "@/components/common/FavoriteButton";
 
 interface PodcastCardProps {
     podcastData: Podcast;
@@ -10,7 +10,6 @@ interface PodcastCardProps {
 
 const PodcastCard = ({ podcastData }: PodcastCardProps) => {
     const { handleOpenDetail } = usePodcastDetailStore();
-    const { handleFavorite } = useFavoritesStore();
     const { title, description, author, image } = podcastData;
 
     return (
@@ -50,17 +49,12 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
             {/* // Card Desktop */}
             <div
                 data-testid="desktop-podcast-card"
-                className="relative hidden md:block max-w-[270px] min-h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg"
+                className="relative hidden md:block min-w-[270px] max-w-[270px] min-h-[344px] flex flex-col justify-end items-end p-4 rounded-xl text-white relative bottom-0 hover:bottom-2 transition-all duration-300 ease-in-out cursor-pointer shadow-lg"
             >
-                <button
-                    className="w-[30px] h-[30px] absolute top-2 right-2 self-end cursor-pointer"
-                    onClick={() => handleFavorite(podcastData)}
-                >
-                    <img
-                        src="/src/assets/star-icon.svg"
-                        alt="favorite button"
-                    />
-                </button>
+                <FavoriteButton
+                    podcastData={podcastData}
+                    className="absolute top-2 right-2 self-end cursor-pointer"
+                />
                 <div
                     onClick={() => handleOpenDetail(podcastData)}
                     className="h-full flex justify-center items-end"

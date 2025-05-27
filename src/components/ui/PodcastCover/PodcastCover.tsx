@@ -6,9 +6,16 @@ type PodcastCoverProps = {
     alt: string;
     className?: string;
     onClick?: () => void;
+    style?: React.CSSProperties;
 };
 
-const PodcastCover = ({ src, alt, className, onClick }: PodcastCoverProps) => {
+const PodcastCover = ({
+    src,
+    alt,
+    className,
+    onClick,
+    style,
+}: PodcastCoverProps) => {
     const [imgSrc, setImgSrc] = useState(
         src && src.trim() !== "" ? src : placeholder
     );
@@ -18,6 +25,7 @@ const PodcastCover = ({ src, alt, className, onClick }: PodcastCoverProps) => {
     return (
         <img
             className={`${className} rounded-lg md:rounded-[14px]`}
+            style={style}
             src={imgSrc}
             alt={alt}
             onError={() => setImgSrc(placeholder)}
