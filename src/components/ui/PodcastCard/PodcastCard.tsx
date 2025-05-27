@@ -3,6 +3,8 @@ import type { Podcast } from "@/types";
 import { Fragment } from "react/jsx-runtime";
 import SafeHtmlContent from "../SafeHtmlContent";
 import FavoriteButton from "@/components/common/FavoriteButton";
+import autorIcon from "@/assets/person-icon.svg";
+import chevronIcon from "@/assets/chevron-icon.svg";
 
 interface PodcastCardProps {
     podcastData: Podcast;
@@ -40,7 +42,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                     <p className="text-xs font-medium mt-1">844 Episodios</p>
                 </div>
                 <img
-                    src="/src/assets/chevron-icon.svg"
+                    src={chevronIcon}
                     alt="chevron icon"
                     className="justify-self-end"
                 />
@@ -85,7 +87,7 @@ const PodcastCard = ({ podcastData }: PodcastCardProps) => {
                         />
                         <span className="flex items-center gap-2 mt-4">
                             <img
-                                src="/src/assets/person-icon.svg"
+                                src={autorIcon}
                                 alt="Autor Icon"
                                 className=""
                             />

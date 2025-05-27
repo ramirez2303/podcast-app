@@ -1,5 +1,6 @@
 import ChipButton from "@/components/ui/ChipButton";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import favoritesIcon from "@/assets/filled-star-icon.svg";
 
 type PodcastsChipsProp = {
     chipSelected: "trending" | "favorites";
@@ -21,7 +22,7 @@ const PodcastsChips = ({
             <ChipButton
                 label="Favoritos"
                 onClick={() => handleChipSelected("favorites")}
-                icon="/src/assets/filled-star-icon.svg"
+                icon={favoritesIcon}
                 count={getFavoritesList()?.length}
                 selected={chipSelected === "favorites"}
             />

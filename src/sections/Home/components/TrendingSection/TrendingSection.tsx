@@ -3,6 +3,7 @@ import PodcastListBase from "@/components/common/PodcastListBase";
 import { useTrendingPodcast } from "@/hooks/useTrendingPodcast";
 import { useTrendingStore } from "@/stores/useTrendingStore";
 import { InView } from "react-intersection-observer";
+import emptyStateIcon from "@/assets/search-no-result.png";
 
 const TrendingSection = () => {
     const { tendringPodcasts, visibleCount, loadMore } = useTrendingStore();
@@ -14,7 +15,7 @@ const TrendingSection = () => {
             {!visibleResults?.length && !isLoading ? (
                 <EmptyState
                     message="No hay resultados disponibles"
-                    imageUrl="/src/assets/search-no-result.png"
+                    imageUrl={emptyStateIcon}
                     imageAlt="No results found image"
                 />
             ) : (

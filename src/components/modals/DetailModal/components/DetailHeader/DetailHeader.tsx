@@ -2,6 +2,8 @@ import FavoriteButton from "@/components/common/FavoriteButton";
 import PodcastCover from "@/components/ui/PodcastCover";
 import SafeHtmlContent from "@/components/ui/SafeHtmlContent";
 import { usePodcastDetailStore } from "@/stores/usePodcastDetailStore";
+import closeIcon from "@/assets/close-icon.svg";
+import chevronIcon from "@/assets/chevron-icon.svg";
 
 type DetailHeaderProps = {
     imageScale: number;
@@ -44,7 +46,7 @@ const DetailHeader = ({
             <div className="w-full flex justify-between items-center px-12">
                 <FavoriteButton podcastData={selectedPodcastData} />
                 <img
-                    src="/src/assets/close-icon.svg"
+                    src={closeIcon}
                     alt="close icon"
                     className="cursor-pointer"
                     onClick={handleCloseDetail}
@@ -85,7 +87,7 @@ const DetailHeader = ({
                 </div>
                 {descriptionHeight >= 75 && (
                     <img
-                        src="/src/assets/chevron-icon.svg"
+                        src={chevronIcon}
                         className={`w-[16px] bottom-0 ${
                             showDetail ? "rotate-270" : "rotate-90"
                         } cursor-pointer duration-300 ease-in-out -mt-2`}

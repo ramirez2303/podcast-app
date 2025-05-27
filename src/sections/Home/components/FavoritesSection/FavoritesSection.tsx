@@ -2,6 +2,7 @@ import EmptyState from "@/components/common/EmptyState";
 import PodcastListBase from "@/components/common/PodcastListBase";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import { Fragment } from "react/jsx-runtime";
+import emptyStateIcon from "@/assets/search-no-result.png";
 
 const FavoritesSection = () => {
     const { getFavoritesList } = useFavoritesStore();
@@ -15,7 +16,7 @@ const FavoritesSection = () => {
             ) : (
                 <EmptyState
                     message="No hay favoritos disponibles"
-                    imageUrl="/src/assets/search-no-result.png"
+                    imageUrl={emptyStateIcon}
                     imageAlt="No results found image"
                 />
             )}

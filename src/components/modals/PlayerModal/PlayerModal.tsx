@@ -2,6 +2,9 @@ import PodcastCover from "@/components/ui/PodcastCover";
 import TextMarquee from "@/components/ui/TextMarquee";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import playIcon from "@/assets/play-icon.svg";
+import pauseIcon from "@/assets/stop-icon.svg";
+import closeIcon from "@/assets/close-icon.svg";
 
 const PlayerModal = () => {
     const { isPlayerOpen, togglePlayer, currentEpisode, clearEpisode } =
@@ -22,9 +25,7 @@ const PlayerModal = () => {
         formatTime,
     } = useAudioPlayer();
 
-    const ButtonIcon = isPlaying
-        ? "/src/assets/stop-icon.svg"
-        : "/src/assets/play-icon.svg";
+    const ButtonIcon = isPlaying ? pauseIcon : playIcon;
 
     return (
         <div
@@ -37,13 +38,13 @@ const PlayerModal = () => {
             } duration-200 ease-in-out `}
         >
             <img
-                src="/src/assets/close-icon.svg"
+                src={closeIcon}
                 alt="close icon"
                 className="hidden md:block absolute top-7 left-7 cursor-pointer"
                 onClick={handleClosePlayer}
             />
             <div className="w-full h-full flex md:flex-col justify-center items-center gap-6">
-                <div className="flex md:flex-col gap-6 md:gap-2 justify-center items-center text-white md:mt-10">
+                <div className="flex md:flex-col gap-6 md:gap-2 justify-center items-center text-white md:mt-8">
                     <PodcastCover
                         className="w-[68px] md:w-[200px] h-[68px] md:h-[200px]"
                         src={currentEpisode?.image}
@@ -74,11 +75,11 @@ const PlayerModal = () => {
                         />
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-2 w-fit">
+                <div className="flex flex-col items-center w-fit">
                     <audio ref={audioRef} src={currentEpisode?.enclosureUrl} />
                     <button
                         onClick={togglePlay}
-                        className="w-fit h-fit p-3 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer"
+                        className="w-fit h-fit p-3 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer md:-mt-6"
                     >
                         <img
                             src={ButtonIcon}

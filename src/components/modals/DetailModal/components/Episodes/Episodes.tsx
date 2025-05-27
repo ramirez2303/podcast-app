@@ -4,6 +4,8 @@ import PodcastCover from "@/components/ui/PodcastCover";
 import { usePodcastEpisodes } from "@/hooks/usePodcastEpisodes";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { InView } from "react-intersection-observer";
+import emptyStateIcon from "@/assets/search-no-result.png";
+import playIcon from "@/assets/play-icon.svg";
 
 type EpisodesProps = {
     title?: string;
@@ -57,7 +59,7 @@ const Episodes = ({ title }: EpisodesProps) => {
                                         className="w-fit h-fit p-3 ml-4 bg-white hover:bg-gray-300 duration-300 ease-in-out rounded-full cursor-pointer self-end"
                                     >
                                         <img
-                                            src="/src/assets/play-icon.svg"
+                                            src={playIcon}
                                             alt="play icon"
                                             className="w-[14px] md:min-w-[18px] h-[14px] md:h-[18px] relative left-[1px]"
                                         />
@@ -67,7 +69,7 @@ const Episodes = ({ title }: EpisodesProps) => {
                         ) : (
                             <EmptyState
                                 message="No hay episodios disponible"
-                                imageUrl="/src/assets/search-no-result.png"
+                                imageUrl={emptyStateIcon}
                                 imageAlt="No results found image"
                                 imageClassname="invert-[.99] sepia-[.1] saturate-[6.71] hue-rotate-[178deg] brightness-[1.13] contrast-100"
                             />

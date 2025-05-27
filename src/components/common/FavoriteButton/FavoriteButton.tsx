@@ -1,5 +1,6 @@
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
 import type { Podcast } from "@/types";
+import starIcon from "@/assets/star-icon.svg";
 
 type FavoriteButtonProps = {
     podcastData?: Podcast;
@@ -21,7 +22,7 @@ const FavoriteButton = ({ podcastData, className }: FavoriteButtonProps) => {
                 }
             }
         >
-            <img src="/src/assets/star-icon.svg" alt="favorite button" />
+            <img src={starIcon} alt="favorite button" />
         </button>
     );
 };

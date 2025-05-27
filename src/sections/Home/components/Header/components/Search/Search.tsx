@@ -1,14 +1,14 @@
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useSearch } from "@/hooks/useSearch";
 import { useSearchStore } from "@/stores/useSearchStore";
+import closeIcon from "@/assets/close-icon.svg";
+import searchIcon from "@/assets/search-icon.svg";
 
 const Search = () => {
     const { isSearching } = useSearchStore();
     const { isOpen, setIsOpen, componentRef } = useClickOutside(isSearching);
     const { inputValue, handleInputChange, handleClearInput } = useSearch();
-    const inputIcon = isSearching
-        ? "/src/assets/close-icon.svg"
-        : "/src/assets/search-icon.svg";
+    const inputIcon = isSearching ? closeIcon : searchIcon;
     return (
         <div className="h-[80px] flex items-center md:justify-between">
             <h1 className="text-[40px] font-black pl-8 md:pl-0 block">

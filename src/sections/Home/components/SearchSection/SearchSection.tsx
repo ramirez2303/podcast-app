@@ -3,6 +3,7 @@ import PodcastListBase from "@/components/common/PodcastListBase";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { InView } from "react-intersection-observer";
 import { Fragment } from "react/jsx-runtime";
+import emptyStateIcon from "@/assets/search-no-result.png";
 
 const SearchSection = () => {
     const { searchResults, isLoadingSearch, visibleCount, loadMore } =
@@ -13,7 +14,7 @@ const SearchSection = () => {
             {!visibleResults.length && !isLoadingSearch ? (
                 <EmptyState
                     message="No se pudieron encontrar resultados"
-                    imageUrl="/src/assets/search-no-result.png"
+                    imageUrl={emptyStateIcon}
                     imageAlt="No results found image"
                 />
             ) : (
