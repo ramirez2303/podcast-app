@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# 🎧 Podcast App - Challenge Técnico Longevo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada como parte del challenge técnico de Longevo. Permite buscar y escuchar podcasts utilizando la API de [Podcast Index](https://podcastindex.org/), con diseño responsivo, experiencia fluida y buenas prácticas de desarrollo moderno.
 
-Currently, two official plugins are available:
+# 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   ⚛️ React 18
+-   ⚡ Vite
+-   🟦 TypeScript
+-   💨 TailwindCSS
+-   🔁 Zustand (state management)
+-   🔍 React Query y Axios (TanStack Query)
+-   🧪 Vitest + Testing Library
 
-## Expanding the ESLint configuration
+# 🗂️ Estructura del Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+src/
+├── assets/            # Íconos, imágenes, fuentes
+├── components/        # Componentes generales
+│   ├── common/        # Componentes genéricos y reutilizables
+│   ├── modals/        # Modales como PlayerModal, DetailModal
+│   └── ui/            # Elementos UI base (Botones, Skeleton, etc)
+├── hooks/             # Hooks personalizados
+├── sections/          # Entradas de secciones principales
+├── stores/            # Zustand stores (usePlayerStore, etc)
+├── tests/
+│   └── mocks/         # Mocks separados para hooks y stores
+├── lib/               # Funcion de Axios (podcastApi.ts)
+├── services/          # Lógica de integración con API de Podcast Index
+└── type/              # Tipados compartidos (Episode, Podcast, ApiResponse)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 🎧 Funcionalidades
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+-   Mostrar podcasts en tendencia
+-   Buscar por nombre o tema
+-   Guardar Podcast como favoritos
+-   Ver detalles de un podcast y sus episodios
+-   Reproducir episodios en un modal flotante
+-   Marcar episodios como favoritos
+-   Paginación infinita en listas de episodios
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+# 📌 Aclaraciones técnicas
+
+-   📄 Paginación infinita: La API de Podcast Index no dispone de un parámetro de página (page) para obtener resultados por partes. Para simular scroll infinito, se realiza una carga inicial de múltiples episodios y se manejan de forma progresiva en el frontend.
+
+-   📱 Vista Mobile y episodios: En la vista móvil, los resultados de podcasts no incluyen la cantidad de episodios disponibles. Debido a esta limitación, ese valor fue representado con un número fijo hardcodeado.
+
+# Clonar el repositorio
+
+-   git clone https://github.com/ramirez2303/longevo-challenge-podcast-app.git
+-   cd longevo-challenge-podcast-app
+
+# Instalar dependencias (preferentemente con yarn)
+
+-   yarn
+
+# Iniciar el servidor de desarrollo
+
+-   yarn dev
+
+# Ejecutar tests unitarios
+
+-   yarn test
