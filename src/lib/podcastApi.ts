@@ -1,8 +1,8 @@
 import axios from "axios";
 import sha1 from "crypto-js/sha1";
 
-const API_KEY = process.env.API_KEY || "";
-const API_SECRET = process.env.API_SECRET || "";
+const API_KEY = "BSF8RLDX4MB7XVEQKR3D";
+const API_SECRET = "WVf3ENMTwZcS8d#vwxcv3tubJKwxUzxhupuyU8h3";
 
 const podcastApi = axios.create({
     baseURL: "https://api.podcastindex.org/api/1.0",
