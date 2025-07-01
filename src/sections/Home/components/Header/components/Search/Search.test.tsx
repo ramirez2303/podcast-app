@@ -86,7 +86,6 @@ describe("Search", () => {
 
         render(<Search />);
 
-        // Selecciona el contenedor que tiene el evento onClick
         const container = screen.getByRole("textbox").parentElement;
         fireEvent.click(container!);
 

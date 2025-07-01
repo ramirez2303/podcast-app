@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [react(), tailwindcss()],
-    base: "/longevo-challenge-podcast-app/",
+    base: "/podcast-app/",
     resolve: {
         alias: {
             "@": "/src",
