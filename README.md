@@ -1,6 +1,6 @@
-# 🎧 Podcast App - Challenge Técnico Longevo
+# 🎧 Podcast App
 
-Aplicación desarrollada como parte del challenge técnico de Longevo. Permite buscar y escuchar podcasts utilizando la API de [Podcast Index](https://podcastindex.org/), con diseño responsivo, experiencia fluida y buenas prácticas de desarrollo moderno.
+Aplicación desarrollada como parte del aprendizaje como frontend. Permite buscar y escuchar podcasts utilizando la API de [Podcast Index](https://podcastindex.org/), con diseño responsivo, experiencia fluida y buenas prácticas de desarrollo moderno.
 
 # 🚀 Tech Stack
 
@@ -49,8 +49,8 @@ src/
 
 # Clonar el repositorio
 
--   git clone https://github.com/ramirez2303/longevo-challenge-podcast-app.git
--   cd longevo-challenge-podcast-app
+-   git clone https://github.com/ramirez2303/podcast-app.git
+-   cd podcast-app
 
 # Instalar dependencias (preferentemente con yarn)
 
