@@ -1,5 +1,6 @@
 // ChipButton.test.tsx
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { screen, fireEvent } from "@testing-library/dom";
 import ChipButton from "./ChipButton";
 import { vi } from "vitest";
 

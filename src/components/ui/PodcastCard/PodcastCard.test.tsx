@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { screen } from "@testing-library/dom";
 import PodcastCard from "./PodcastCard";
 import { vi } from "vitest";
 import type { Podcast } from "@/types";

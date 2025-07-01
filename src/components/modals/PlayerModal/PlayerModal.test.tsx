@@ -2,7 +2,8 @@ import "@/test/mocks/useAudioPlayerMock.ts";
 import "@/test/mocks/usePlayerStoreMock.ts";
 import togglePlayMock from "@/test/mocks/useAudioPlayerMock";
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { screen, fireEvent } from "@testing-library/dom";
 import PlayerModal from "@/components/modals/PlayerModal";
 
 describe("PlayerModal", () => {
